@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{5DFB33FD-0ADF-0B8E-157E-F9FF7700ED97}") = "Rimworld_V", "Assembly-CSharp.csproj", "{AAE69302-BB17-8DB7-6335-0A0FA04B3147}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAE69302-BB17-8DB7-6335-0A0FA04B3147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE69302-BB17-8DB7-6335-0A0FA04B3147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE69302-BB17-8DB7-6335-0A0FA04B3147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE69302-BB17-8DB7-6335-0A0FA04B3147}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
