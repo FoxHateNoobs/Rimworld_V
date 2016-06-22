@@ -7,10 +7,14 @@ public class WorldControl : MonoBehaviour {
 
 	World world;
 
+
 	void Start () {
 	
 		world = new World(10, 10);
 		createCellGOs();
+	}
+
+	void Update() {
 	}
 
 	void createCellGOs() {
@@ -42,6 +46,10 @@ public class WorldControl : MonoBehaviour {
 			case Tile.TileType.floor:
 				go.GetComponent<SpriteRenderer>().sprite = floor_sp;
 				break;
+
+			default:
+				Debug.Log("NO TYPE " + tile.x + " " + tile.y);
+				break; 
 		}
 	}
 }
