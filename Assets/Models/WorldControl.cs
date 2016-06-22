@@ -7,26 +7,10 @@ public class WorldControl : MonoBehaviour {
 
 	World world;
 
-	float t = 1f;
-
 	void Start () {
 	
 		world = new World(10, 10);
 		createCellGOs();
-		world.randomizeTiles();
-	}
-
-	void Update() {
-
-		t -= Time.deltaTime;
-
-		if(t < 0) {
-
-			t = 1f;
-
-			createCellGOs();
-			world.randomizeTiles();
-		}
 	}
 
 	void createCellGOs() {
@@ -42,6 +26,8 @@ public class WorldControl : MonoBehaviour {
 				world.getTileAt(x, y).registerTypeChangedCB( (tile_data) => { changeSprite(tile, tile_data); });
 			}
 		}
+
+		world.randomizeTiles();
 	}
 
 	void changeSprite(GameObject go, Tile tile) {
@@ -56,10 +42,6 @@ public class WorldControl : MonoBehaviour {
 			case Tile.TileType.floor:
 				go.GetComponent<SpriteRenderer>().sprite = floor_sp;
 				break;
-
-			default:
-				Debug.Log("NO TYPE " + tile.x + " " + tile.y);
-				break; 
 		}
 	}
 }

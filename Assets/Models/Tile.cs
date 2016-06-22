@@ -4,12 +4,12 @@ using System;
 
 public class Tile {
 
-	public enum TileType { ERROR, empty, floor }
+	public enum TileType { NaN, empty, floor }
 
 	public int x { get; private set; }
 	public int y { get; private set; }
 	
-	private TileType type = TileType.ERROR;
+	private TileType type = TileType.NaN;
 
 	private Action<Tile> typeChangeCB;
 

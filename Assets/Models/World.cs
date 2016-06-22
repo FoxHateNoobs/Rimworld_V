@@ -33,7 +33,7 @@ public class World {
 		for(int x = 0; x < width; x++) {
 			for(int y = 0; y < height; y++) {
 
-				if(Random.Range(1, 3) == 1) {
+				if(Random.Range(0, 2) == 0) {
 
 					tiles[x,y].Type = Tile.TileType.empty;
 				} else {
