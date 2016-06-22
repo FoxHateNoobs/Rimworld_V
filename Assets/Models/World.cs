@@ -33,12 +33,17 @@ public class World {
 		for(int x = 0; x < width; x++) {
 			for(int y = 0; y < height; y++) {
 
-				if(Random.Range(1, 3) == 1) {
+				int rand = Random.Range(0, 101);
 
-					tiles[x,y].Type = Tile.TileType.empty;
-				} else {
+				if(rand <= 5) {
 
 					tiles[x,y].Type = Tile.TileType.floor;
+				} else if(rand <= 25) {
+
+					tiles[x,y].Type = Tile.TileType.dirt;
+				} else if(rand <= 100) {
+
+					tiles[x,y].Type = Tile.TileType.grass;
 				}
 			}
 		}

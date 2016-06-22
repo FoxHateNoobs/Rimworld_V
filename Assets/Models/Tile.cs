@@ -4,7 +4,7 @@ using System;
 
 public class Tile {
 
-	public enum TileType { ERROR, empty, floor }
+	public enum TileType { ERROR, empty, floor, dirt, grass }
 
 	public int x { get; private set; }
 	public int y { get; private set; }

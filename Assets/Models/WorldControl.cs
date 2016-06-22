@@ -3,14 +3,14 @@ using System.Collections;
 
 public class WorldControl : MonoBehaviour {
 
-	public Sprite empty_sp, floor_sp;
+	public Sprite empty_sp, floor_sp, dirt_sp, grass_sp;
 
 	World world;
 
 
 	void Start () {
 	
-		world = new World(10, 10);
+		world = new World(100, 100);
 		createCellGOs();
 	}
 
@@ -24,6 +24,7 @@ public class WorldControl : MonoBehaviour {
 
 
 				GameObject tile = new GameObject("tile_" + x + "_" + y);
+				tile.transform.parent = GameObject.Find("WorldControl").transform;
 				tile.transform.position = new Vector3(x, y, 0);
 				tile.AddComponent<SpriteRenderer>();
 
@@ -45,6 +46,14 @@ public class WorldControl : MonoBehaviour {
 
 			case Tile.TileType.floor:
 				go.GetComponent<SpriteRenderer>().sprite = floor_sp;
+				break;
+
+			case Tile.TileType.grass:
+				go.GetComponent<SpriteRenderer>().sprite = grass_sp;
+				break;
+
+			case Tile.TileType.dirt:
+				go.GetComponent<SpriteRenderer>().sprite = dirt_sp;
 				break;
 
 			default:
