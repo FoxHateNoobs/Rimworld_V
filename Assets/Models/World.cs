@@ -40,10 +40,10 @@ public class World {
 					tiles[x,y].Type = Tile.TileType.floor;
 				} else if(rand <= 25) {
 
-					tiles[x,y].Type = Tile.TileType.dirt;
+					tiles[x,y].Type = Tile.TileType.grass;
 				} else if(rand <= 100) {
 
-					tiles[x,y].Type = Tile.TileType.grass;
+					tiles[x,y].Type = Tile.TileType.dirt;
 				}
 			}
 		}
