@@ -9,6 +9,8 @@ public class Tile {
 	public int x { get; private set; }
 	public int y { get; private set; }
 	
+	public InstalledObject installedObject;
+	
 	private TileType type = TileType.ERROR;
 
 	private Action<Tile> typeChangeCB;
@@ -35,6 +37,7 @@ public class Tile {
 		typeChangeCB += callback;
 	}
 
+	
 	public Tile(int X, int Y) {
 
 		x = X;
