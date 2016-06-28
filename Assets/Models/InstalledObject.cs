@@ -4,7 +4,7 @@ using System;
 
 public class InstalledObject {
 
-	public enum ObjectType {tree_01} 
+	public enum ObjectType {treePine} 
 
 	public int x, y;
 
@@ -36,7 +36,7 @@ public class InstalledObject {
 		this.y = y;
 	}
 
-	public void registerObjectChanceCB(Action<InstalledObject> callback) {
+	public void registerObjectChangeCB(Action<InstalledObject> callback) {
 
 		objectChangeCB += callback;
 	}

@@ -10,8 +10,12 @@ public class Tile {
 	public int y { get; private set; }
 	
 	public InstalledObject installedObject;
-	
+
+	public Action<Tile> selectedCB;
+
 	private TileType type = TileType.ERROR;
+
+	private bool selected = false;
 
 	private Action<Tile> typeChangeCB;
 
@@ -32,12 +36,28 @@ public class Tile {
 		}
 	}
 
+	public bool Selected {
+
+		get {
+
+			return selected;
+		}
+
+		set {
+
+			if(typeChangeCB != null) {
+			
+			selected = value;
+			selectedCB(this);							
+			}	
+		}
+	}
+
 	public void registerTypeChangedCB(Action<Tile> callback) {
 
 		typeChangeCB += callback;
 	}
 
-	
 	public Tile(int X, int Y) {
 
 		x = X;

@@ -3,13 +3,19 @@ using System.Collections;
 
 public class WorldControl : MonoBehaviour {
 
-	public Sprite empty_sp, floor_sp, dirt_sp, grass_sp, tree_01_sp;
+	public static WorldControl Instance { get; private set; }
 
-	World world;
+	public Sprite empty_sp, floor_sp, dirt_sp, grass_sp, treePine, sBounds;
 
+	public World world;
 
 	void Start () {
-	
+		
+		if(Instance == null) {
+
+			Instance = this;
+		}	
+
 		world = new World(100, 100);
 		createCellGOs();
 	}
@@ -25,7 +31,13 @@ public class WorldControl : MonoBehaviour {
 				tile.transform.position = new Vector3(x, y, 0);
 				tile.AddComponent<SpriteRenderer>();
 
+				GameObject select = new GameObject("select_" + x + "_" + y);
+				select.transform.parent = GameObject.Find("tile_" + x + "_" + y).transform;
+				select.transform.position = new Vector3(x, y, -3);
+				select.AddComponent<SpriteRenderer>();
+
 				world.getTileAt(x, y).registerTypeChangedCB( (tile_data) => { changeSprite(tile, tile_data); });
+				world.getTileAt(x, y).selectedCB += ( (tile_data) => { Select(select, tile_data); });
 			}
 		}
 
@@ -43,13 +55,14 @@ public class WorldControl : MonoBehaviour {
 					world.getTileAt(x, y).installedObject = new InstalledObject(x, y);
 
 					GameObject tree = new GameObject("tree_" + x + "_" + y);
-					tree.transform.parent = GameObject.Find("WorldControl").transform;
-					tree.transform.position = new Vector3(x, y, -1);
+					tree.transform.parent = GameObject.Find("tile_" + x + "_" + y).transform;
+					tree.transform.localScale = new Vector3(Random.Range(1f, 1.7f), Random.Range(1f, 1.7f), 1f);
+					tree.transform.position = new Vector3(x, y + (tree.transform.localScale.y - 1f)/2, -1);
 					tree.AddComponent<SpriteRenderer>();
 
-					world.getTileAt(x, y).installedObject.registerObjectChanceCB( (object_data) => {changeObjectSprite(tree, object_data); });
+					world.getTileAt(x, y).installedObject.registerObjectChangeCB( (object_data) => {changeObjectSprite(tree, object_data); });
 
-					world.getTileAt(x, y).installedObject.iObject = InstalledObject.ObjectType.tree_01;
+					world.getTileAt(x, y).installedObject.iObject = InstalledObject.ObjectType.treePine;
 				}
 			}
 		}
@@ -80,19 +93,28 @@ public class WorldControl : MonoBehaviour {
 				Debug.Log("NO TYPE " + tile.x + " " + tile.y);
 				break; 
 		}
-	}
+	}	
 
 	void changeObjectSprite(GameObject go, InstalledObject iObject) {
 
 
-
 		switch(iObject.iObject) {
 
-			case InstalledObject.ObjectType.tree_01:
+			case InstalledObject.ObjectType.treePine:
 
-				go.GetComponent<SpriteRenderer>().sprite = tree_01_sp;
+				go.GetComponent<SpriteRenderer>().sprite = treePine;
 			break;
+		}
+	}
 
+	void Select(GameObject go, Tile tile) {
+
+		if(tile.Selected) {
+
+			go.GetComponent<SpriteRenderer>().sprite = sBounds; 
+		} else {
+
+			go.GetComponent<SpriteRenderer>().sprite = null;
 		}
 	}
 }
