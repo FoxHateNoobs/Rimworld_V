@@ -9,7 +9,13 @@ public class Tile {
 	public int x { get; private set; }
 	public int y { get; private set; }
 	
+	public InstalledObject installedObject;
+
+	public Action<Tile> selectedCB;
+
 	private TileType type = TileType.ERROR;
+
+	private bool selected = false;
 
 	private Action<Tile> typeChangeCB;
 
@@ -27,6 +33,23 @@ public class Tile {
 				type = value;
 				typeChangeCB(this);
 			}
+		}
+	}
+
+	public bool Selected {
+
+		get {
+
+			return selected;
+		}
+
+		set {
+
+			if(typeChangeCB != null) {
+			
+			selected = value;
+			selectedCB(this);							
+			}	
 		}
 	}
 

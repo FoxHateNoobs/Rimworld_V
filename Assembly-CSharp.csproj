@@ -45,11 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Models\InstalledObject.cs" />
      <Compile Include="Assets\Models\Tile.cs" />
      <Compile Include="Assets\Models\World.cs" />
      <Compile Include="Assets\Models\WorldControl.cs" />
      <Compile Include="Assets\UIcontrol\CameraControl.cs" />
      <Compile Include="Assets\UIcontrol\CursorControl.cs" />
+     <Compile Include="Assets\UIcontrol\InfoBarControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
